@@ -1,6 +1,7 @@
 package utilities;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -21,30 +22,31 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
+import static io.appium.java_client.AppiumBy.androidUIAutomator;
 import static java.time.Duration.ofMillis;
 import static java.util.Collections.singletonList;
 import static utilities.Driver.getAppiumDriver;
 
 public class ReusableMethods {
-   private static DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
+    private static DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
 
+    public static void apkYukle() {
 
-
-    public static void apkYukle(){
-
-        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,ConfigReader.getProperty("Pixel 8 Pro"));
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,ConfigReader.getProperty("12.0"));
-        desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, ConfigReader.getProperty("Pixel 8 Pro"));
+        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, ConfigReader.getProperty("12.0"));
+        desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         //desiredCapabilities.setCapability(MobileCapabilityType.APP,ConfigReader.getProperty(apk));
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,ConfigReader.getProperty("com.wise.querycart"));
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,ConfigReader.getProperty("com.wise.querycart.MainActivity"));
+        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, ConfigReader.getProperty("com.wise.querycart"));
+        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ConfigReader.getProperty("com.wise.querycart.MainActivity"));
     }
-    public static void elementClick(WebElement elementName){
-        var el1 = getAppiumDriver().findElement(AppiumBy.androidUIAutomator("new UiSelector().className(\""+elementName+"\").instance(0)"));
+
+    public static void elementClick(WebElement elementName) {
+        var el1 = getAppiumDriver().findElement(AppiumBy.androidUIAutomator("new UiSelector().className(\"" + elementName + "\").instance(0)"));
         el1.click();
     }
+
     public static void koordinatTiklama(int xKoordinat, int yKoordinat, int bekleme, WebElement slider) throws InterruptedException {
         Point source = slider.getLocation();
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -58,24 +60,25 @@ public class ReusableMethods {
         sequence.addAction(finger.createPointerUp(PointerInput.MouseButton.MIDDLE.asArg()));
 
         getAppiumDriver().perform(singletonList(sequence));
-           }
+    }
 
-  //  static AndroidDriver<AndroidElement> driver=Driver.getAppiumDriver();
-    public static void koordinatTiklamaMethodu(int x,int y) throws InterruptedException {
-        TouchAction action=new TouchAction((PerformsTouchActions) getAppiumDriver());
-        action.press(PointOption.point(x,y)).release().perform();
+    //  static AndroidDriver<AndroidElement> driver=Driver.getAppiumDriver();
+    public static void koordinatTiklamaMethodu(int x, int y) throws InterruptedException {
+        TouchAction action = new TouchAction((PerformsTouchActions) getAppiumDriver());
+        action.press(PointOption.point(x, y)).release().perform();
         Thread.sleep(1000);
     }
 
     public static void scrollWithUiScrollableAndClick(String elementText) {
-        AndroidDriver driver = (AndroidDriver)  Driver.getAppiumDriver();
-      //  driver.findElement(AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
+        AndroidDriver driver = (AndroidDriver) Driver.getAppiumDriver();
+        //  driver.findElement(AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
         driver.findElement(By.xpath("//*[@text='" + elementText + "']")).click();
 
     }
+
     public static void scrollWithUiScrollable(String elementText) {
-        AndroidDriver driver = (AndroidDriver)  getAppiumDriver();
-     //   driver.findElement(AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))"));
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
+        //   driver.findElement(AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))"));
 
     }
 
@@ -83,7 +86,7 @@ public class ReusableMethods {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         // TakesScreenshot is an interface of selenium that takes the screenshot
-        TakesScreenshot ts = (TakesScreenshot)Driver.getAppiumDriver();
+        TakesScreenshot ts = (TakesScreenshot) Driver.getAppiumDriver();
 
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
@@ -94,14 +97,15 @@ public class ReusableMethods {
         return target;
     }
 
-    public static void ekranKaydirmaMethodu(int xPress,int yPress,int wait,int xMove,int yMove){
-        TouchAction action=new TouchAction<>((PerformsTouchActions) getAppiumDriver());
-        action.press(PointOption.point(xPress,yPress))
+    public static void ekranKaydirmaMethodu(int xPress, int yPress, int wait, int xMove, int yMove) {
+        TouchAction action = new TouchAction<>((PerformsTouchActions) getAppiumDriver());
+        action.press(PointOption.point(xPress, yPress))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
-                .moveTo(PointOption.point(xMove,yMove))
+                .moveTo(PointOption.point(xMove, yMove))
                 .release()
                 .perform();
     }
+
     public static void wait(int saniye) {
         try {
             Thread.sleep(saniye * 1000);
@@ -111,5 +115,13 @@ public class ReusableMethods {
     }
 
 
+    public static void scrollWithUiScrollableContentDesc(String elementText) {
+
+        Driver.getAppiumDriver().findElement(
+                MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
+                )
+        );
+    }
 
 }
