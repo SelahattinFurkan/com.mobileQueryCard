@@ -1,8 +1,6 @@
 package utilities;
 
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -14,11 +12,14 @@ import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Collections;
 import java.util.Date;
 
 import static java.time.Duration.ofMillis;
@@ -37,9 +38,9 @@ public class ReusableMethods {
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,ConfigReader.getProperty("version"));
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
-        //desiredCapabilities.setCapability(MobileCapabilityType.APP,ConfigReader.getProperty(apk));
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,ConfigReader.getProperty("appPackage"));
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,ConfigReader.getProperty("appActivity"));
+        desiredCapabilities.setCapability(MobileCapabilityType.APP,ConfigReader.getProperty("apk"));
+       // desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,ConfigReader.getProperty("appPackage"));
+       // desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,ConfigReader.getProperty("appActivity"));
     }
     public static void elementClick(WebElement elementName){
         var el1 = getAppiumDriver().findElement(AppiumBy.androidUIAutomator("new UiSelector().className(\""+elementName+"\").instance(0)"));
@@ -109,6 +110,47 @@ public class ReusableMethods {
             e.printStackTrace();
         }
     }
+
+    public static void scrollWithUiScrollableContentDesc(String elementText) {
+
+        Driver.getAppiumDriver().findElement(
+                MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
+                )
+        );
+    }
+
+
+    public static void waitForElementAndClick(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+
+        // Element görünür olana kadar bekler ve ardından tıklar
+        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        clickableElement.click();
+    }
+
+
+    public static void waitForElementAndSendkey(WebElement element,String key) {
+        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+
+        // Element görünür olana kadar bekler ve ardından tıklar
+        WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        enableElement.sendKeys(key);
+    }
+
+    public static void clickAtCoordinatesW3C(int x, int y) {
+        AppiumDriver driver = Driver.getAppiumDriver();
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1)
+                .addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), x, y))
+                .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(tap));
+    }
+
+
 
 
 
