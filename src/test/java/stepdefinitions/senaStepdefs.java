@@ -16,10 +16,8 @@ public class senaStepdefs extends senaPage {
     senaPage senaPage = new senaPage();
     private AndroidDriver driver;
 
-    @When("The user logs in with valid login credentials.")
-    public void the_user_logs_in_with_valid_login_credentials() {
-        Driver.getAppiumDriver();
-        ReusableMethods.wait(10);
+    @When("Login with user information")
+    public void login_with_user_information() {
         senaPage.profileButton.click();
         ReusableMethods.wait(2);
         senaPage.profileSignIn.click();
@@ -32,9 +30,11 @@ public class senaStepdefs extends senaPage {
         ReusableMethods.wait(2);
         senaPage.buttonSignIn.click();
         ReusableMethods.wait(2);
+
     }
     @When("The user clicks on the product under most popular on the home page, selects the size and adds it to the cart.")
     public void the_user_clicks_on_the_product_under_most_popular_on_the_home_page_selects_the_size_and_adds_it_to_the_cart() {
+
         senaPage.tShirtProduit.click();
         senaPage.tShirtSize.click();
         senaPage.buttonAddtoCart.click();
