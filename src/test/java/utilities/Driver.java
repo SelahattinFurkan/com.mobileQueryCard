@@ -20,7 +20,7 @@ public class Driver {
 
 
         /**  Gercek cihaz icin url "http:0.0.0.0:4723/wd/hub";
-             Emilator cihaz icin url "http:127.0.0.1:4723/wd/hub";
+         Emilator cihaz icin url "http:127.0.0.1:4723/wd/hub";
          *******   Driver null olduğunda telefonumuza ait özellikleri hazırlarız
          */
         if (driver == null) {
@@ -28,7 +28,7 @@ public class Driver {
                 case "Android":
                     options = new UiAutomator2Options();
                     options.setPlatformName("Android").setAutomationName("UiAutomator2");
-                    options.setApp("C:\\Users\\ustas\\OneDrive\\Masaüstü\\apk");
+                   // options.setApp("C:\\Users\\ustas\\OneDrive\\Masaüstü\\apk");
                     options.setAppPackage("com.wise.querycart");
                     options.setAppActivity("com.wise.querycart.MainActivity");
                     options.setUdid("emulator-5554");
@@ -65,5 +65,5 @@ public class Driver {
             driver = null;
         }
     }
-
 }
+
