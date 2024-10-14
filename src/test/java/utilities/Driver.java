@@ -20,7 +20,7 @@ public class Driver {
 
 
         /**  Gercek cihaz icin url "http:0.0.0.0:4723/wd/hub";
-             Emilator cihaz icin url "http:127.0.0.1:4723/wd/hub";
+         Emilator cihaz icin url "http:127.0.0.1:4723/wd/hub";
          *******   Driver null olduğunda telefonumuza ait özellikleri hazırlarız
          */
         if (driver == null) {
@@ -65,5 +65,5 @@ public class Driver {
             driver = null;
         }
     }
-
 }
+
