@@ -1,4 +1,16 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
 Feature:As a registered user, I would like to have a page on the site where I can select and manage my address information before completing the payment.
   @2
   Scenario: Delivery and Pick Up buttons visible and active
