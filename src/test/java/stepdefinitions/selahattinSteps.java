@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Given;
+import utilities.ReusableMethods;
 
 import static utilities.Driver.getAppiumDriver;
 
@@ -8,6 +9,8 @@ public class selahattinSteps {
     @Given("User makes driver adjustments")
     public void user_makes_driver_adjustments() {
         getAppiumDriver();
+        ReusableMethods.wait(10);
+
     }
     @Given("In the body section, the {string} category and subcategories are visible and must be active.")
     public void ın_the_body_section_the_category_and_subcategories_are_visible_and_must_be_active(String string) {

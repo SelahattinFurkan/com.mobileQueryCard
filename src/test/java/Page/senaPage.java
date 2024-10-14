@@ -5,22 +5,22 @@ import org.openqa.selenium.support.FindBy;
 
 public class senaPage {
 
-    @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Profile\"]")
+    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[23]")
     public WebElement profileButton;
 
-    @FindBy(xpath = "//android.view.View[@content-desc=\"Sign In\"]")
+    @FindBy(xpath = "//*[@content-desc='Sign In']")
     public WebElement profileSignIn;
 
-    @FindBy(xpath = "//android.view.View[@content-desc=\"*Use Email Instead\"]")
+    @FindBy(xpath = "//*[@content-desc='*Use Email Instead']")
     public WebElement useEmailText;
 
-    @FindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[1]")
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
     public WebElement boxEmail;
 
-    @FindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[2]")
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
     public WebElement boxPassword;
 
-    @FindBy(xpath = "(//android.view.View[@content-desc=\"Sign In\"])[2]")
+    @FindBy(xpath = "(//*[@content-desc='Sign In'])[2]")
     public WebElement buttonSignIn;
 
     @FindBy(xpath = "//android.view.View[@content-desc=\"Flower Print Foil T-shirt\n" +
