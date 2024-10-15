@@ -114,10 +114,9 @@ public class homePageStepDefs {
         boolean reachedEnd = false;
 
         while (!categoryFound) {
-            // Elementleri her döngüde tekrar al, böylece DOM değişikliklerinden etkilenmez
+
             List<WebElement> visibleCategories = Driver.getAppiumDriver().findElements(By.xpath("(//android.view.View)[11]//android.view.View"));
 
-            // Görünen kategoriler arasında hedef kategoriyi kontrol et
             for (WebElement category : visibleCategories) {
                 String categoryName = category.getAttribute("content-desc");
 
@@ -125,45 +124,41 @@ public class homePageStepDefs {
                     if (!allCategories.contains(categoryName)) {
                         allCategories.add(categoryName);
 
-                        // Eğer hedef kategori bulunduysa
                         if (categoryName.equals(categoryNameVariable)) {
                             categoryFound = true;
-                            category.click(); // Kategoriye tıklama
-                            break; // Döngüyü bitir
+                            category.click();
+                            break;
                         }
                     }
                 }
             }
 
-            if (categoryFound) break; // Kategori bulunduktan sonra dış döngüyü de bitir
+            if (categoryFound) break;
 
-            // Eğer liste sonuna ulaşıldıysa geri kaydır
             if (reachedEnd) {
                 try {
-                    OptionsMet.swipe(0, 1162, 1188, 1162); // Geri kaydırma
+                    OptionsMet.swipe(0, 1162, 1188, 1162);
                 } catch (InvalidMidiDataException e) {
                     throw new RuntimeException(e);
                 }
                 ReusableMethods.wait(1);
 
             } else {
-                // Son görünen kategori
+
                 String lastVisibleCategory = visibleCategories.get(visibleCategories.size() - 1).getAttribute("content-desc");
 
                 try {
-                    OptionsMet.swipe(1188, 1162, 0, 1162); // İleri kaydırma
+                    OptionsMet.swipe(1188, 1162, 0, 1162);
                 } catch (InvalidMidiDataException e) {
                     throw new RuntimeException(e);
                 }
                 ReusableMethods.wait(1);
 
-                // Kaydırmadan sonra elementleri tekrar al
                 visibleCategories = Driver.getAppiumDriver().findElements(By.xpath("(//android.view.View)[11]//android.view.View"));
 
-                // Eğer son kategori kaydırmadan sonra değişmediyse, sona ulaşıldı demektir
                 String newLastVisibleCategory = visibleCategories.get(visibleCategories.size() - 1).getAttribute("content-desc");
                 if (lastVisibleCategory.equals(newLastVisibleCategory)) {
-                    reachedEnd = true; // Sonuna ulaşıldı, geri kaydırmaya başla
+                    reachedEnd = true;
                 }
             }
         }
