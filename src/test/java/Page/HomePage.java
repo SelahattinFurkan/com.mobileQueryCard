@@ -13,4 +13,10 @@ public class HomePage {
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()), this);
     }
 
+
+    @FindBy(xpath = "(//android.view.View)[6]")
+    public WebElement categoryPageTitle;
+
+    @FindBy(xpath = "(//android.view.View)[10]")
+    public WebElement productName;
 }
