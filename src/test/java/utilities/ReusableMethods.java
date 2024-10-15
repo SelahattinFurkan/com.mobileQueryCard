@@ -124,4 +124,13 @@ public class ReusableMethods {
         );
     }
 
+    public static void scrollWithUiScrollableContentDescClick(String elementText) {
+
+        Driver.getAppiumDriver().findElement(
+                MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
+                )
+        ).click();
+    }
+
 }
