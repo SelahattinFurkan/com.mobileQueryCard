@@ -17,6 +17,27 @@ import java.util.NoSuchElementException;
 
 public class homePageStepDefs {
 
+
+  //HomePage homePage = new HomePage();
+
+  //@Given("Locate the {string} heading on the homepage.")
+  //public void locate_the_categories_heading_on_the_homepage(String text) {
+  //    ReusableMethods.scrollWithUiScrollableContentDesc(text);
+  //}
+
+  //@Given("Verify all the categories are visible under the Categories heading.")
+  //public void verify_all_the_categories_are_visible_under_the_categories_heading() throws InvalidMidiDataException {
+
+  //    List<String> actualCategoryNames = new ArrayList<>();
+
+  //    for (int i = 1; i < 25; i++) {
+  //        actualCategoryNames.add(homePage.categoryNames.get(i).getAttribute("content-desc"));
+  //        ReusableMethods.wait(1);
+  //        System.out.println(actualCategoryNames.get(i - 1));
+
+  //        OptionsMet.swipe(339, 1162, 93, 1162);
+  //    }
+=======
     static String categoryName;
     static String productName;
 
@@ -41,11 +62,16 @@ public class homePageStepDefs {
 
         List<String> actualCategoryNames = getAllCategories();
 
+
         for (int i = 0; i < actualCategoryNames.size(); i++) {
             Assert.assertEquals(expectedCategoryNames.get(i), actualCategoryNames.get(i));
         }
     }
 
+
+   //}
+}
+=======
     @Given("Select {string} category.")
     public void select_category(String assignedCategoryName) {
         categoryName = assignedCategoryName;
@@ -172,3 +198,4 @@ public class homePageStepDefs {
 
 
 }
+

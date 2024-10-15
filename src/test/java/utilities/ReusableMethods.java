@@ -133,6 +133,8 @@ public class ReusableMethods {
         ).click();
     }
 
+
+=======
     public static void clickWithUiScrollableDescriptionContains(String elementText){
         Driver.getAppiumDriver().findElement(
                 MobileBy.AndroidUIAutomator(
@@ -141,6 +143,7 @@ public class ReusableMethods {
         ).click();
 
     }
+
 
 
 }
