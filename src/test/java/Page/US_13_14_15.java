@@ -22,6 +22,15 @@ public class US_13_14_15 {
     @FindBy(xpath = "(//*[@content-desc='Sign In'])[2]")
     public WebElement SignInButon;
 
+    @FindBy(xpath = "//android.view.View[@content-desc=\"Men\"]")
+    public WebElement menCategories;
+
+    @FindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" +
+            "0 (0  Reviews)\n" +
+            "$15.00\"]/android.widget.ImageView")
+    public WebElement like;
+
+
 
 
 

@@ -134,7 +134,7 @@ public class ReusableMethods {
     }
 
 
-=======
+
     public static void clickWithUiScrollableDescriptionContains(String elementText){
         Driver.getAppiumDriver().findElement(
                 MobileBy.AndroidUIAutomator(

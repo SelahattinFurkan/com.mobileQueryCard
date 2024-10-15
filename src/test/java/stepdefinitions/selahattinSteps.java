@@ -4,7 +4,7 @@ import Page.US_13_14_15;
 import io.cucumber.java.en.Given;
 
 import org.openqa.selenium.interactions.Actions;
-=======
+
 
 import utilities.ReusableMethods;
 
@@ -18,7 +18,6 @@ public class selahattinSteps {
 
         ReusableMethods.wait(6);
         Actions actions = new Actions(getAppiumDriver());
-=======
         ReusableMethods.wait(10);
 
 
@@ -46,11 +45,11 @@ public class selahattinSteps {
 
     @Given("In the body section, the {string} category and subcategories are visible and must be active.")
     public void ın_the_body_section_the_category_and_subcategories_are_visible_and_must_be_active(String string) {
-
+        us.menCategories.isDisplayed();
     }
     @Given("Click on the {string} logo")
     public void click_on_the_logo(String string) {
-
+        us.menCategories.click();
     }
     @Given("Addition to the liked list")
     public void addition_to_the_liked_list() {

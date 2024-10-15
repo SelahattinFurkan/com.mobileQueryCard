@@ -1,8 +1,6 @@
 Feature: As a registered user, I would like to be able to see the categories and products of the Menu menu on the home page.
   Background: User opens the app
     * User makes driver adjustments
-
-  Scenario: Sign In
     * User clicks the button with description "Profile"
     * User clicks the button with description "Sign In"
     * User clicks the button with description "*Use Email Instead"
