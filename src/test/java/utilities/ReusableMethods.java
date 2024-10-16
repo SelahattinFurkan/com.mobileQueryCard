@@ -15,6 +15,8 @@ import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -124,6 +126,7 @@ public class ReusableMethods {
         );
     }
 
+
     public static void scrollWithUiScrollableContentDescClick(String elementText) {
 
         Driver.getAppiumDriver().findElement(
@@ -131,17 +134,6 @@ public class ReusableMethods {
                         "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
                 )
         ).click();
-    }
-
-
-
-    public static void clickWithUiScrollableDescriptionContains(String elementText){
-        Driver.getAppiumDriver().findElement(
-                MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().descriptionContains(\"" + elementText + "\"));"
-                )
-        ).click();
-
     }
 
 

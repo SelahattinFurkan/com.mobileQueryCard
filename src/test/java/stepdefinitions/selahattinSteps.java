@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import Page.US_13_14_15;
 import io.cucumber.java.en.Given;
 
 import org.openqa.selenium.interactions.Actions;
@@ -11,13 +10,6 @@ import utilities.ReusableMethods;
 import static utilities.Driver.getAppiumDriver;
 
 public class selahattinSteps {
-    US_13_14_15 us = new US_13_14_15();
-    @Given("User makes driver adjustments")
-    public void user_makes_driver_adjustments() {
-        getAppiumDriver();
-
-        ReusableMethods.wait(6);
-        Actions actions = new Actions(getAppiumDriver());
         ReusableMethods.wait(10);
 
 
