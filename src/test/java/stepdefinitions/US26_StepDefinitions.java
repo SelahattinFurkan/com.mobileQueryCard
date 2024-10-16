@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import Page.US26_WebElement;
+import Page.US27_WebElement;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,6 +26,7 @@ import java.time.Duration;
 public class US26_StepDefinitions {
 
     US26_WebElement user =new US26_WebElement();
+    US27_WebElement us27 =new US27_WebElement();
 
     public static String getTexte;
 
@@ -65,6 +67,7 @@ public class US26_StepDefinitions {
             }
         }
 
+        ReusableMethods.clickAtCoordinatesW3C(233,1858);
 
         ReusableMethods.waitForElementAndClick(user.SignInButon);
 
@@ -121,6 +124,19 @@ public class US26_StepDefinitions {
             case "Wishlist" :
                 ReusableMethods.waitForElementAndClick(user.wishList);
                 break;
+
+            case "premierProduit" :
+                ReusableMethods.waitForElementAndClick(user.premierProduit);
+                break;
+
+            case "favorite" :
+                ReusableMethods.scrollWithUiScrollableContentDesc("Favorite");
+                ReusableMethods.waitForElementAndClick(user.favorite);
+                break;
+
+            case "Go To Shopping" :
+                ReusableMethods.waitForElementAndClick(us27.goToShopping);
+                break;
         }
 
     }
@@ -130,6 +146,21 @@ public class US26_StepDefinitions {
     public void sn_wait(Integer int1) throws InterruptedException {
        Thread.sleep(int1);
     }
+
+    @When("user comes back")
+    public void user_comes_back() {
+       ReusableMethods.waitForElementAndClick(user.back);
+    }
+
+    @When("user sees the Cart icon on the home page")
+    public void user_sees_the_cart_icon_on_the_home_page() {
+
+        ReusableMethods.waitForElementIsDisplayed(us27.cart);
+        Assert.assertTrue(us27.cart.isDisplayed());
+
+    }
+
+
 
 
 

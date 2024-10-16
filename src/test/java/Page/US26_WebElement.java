@@ -31,16 +31,15 @@ public class US26_WebElement {
     @FindBy(xpath = "(//*[@class='android.view.View'])[7]")
     public WebElement oneProductsFound;
 
+    @FindBy(xpath = "(//*[@class='android.view.View'])[19]")
+    public WebElement premierProduit;
+
+    @FindBy(xpath = "//*[@content-desc='Favorite']")
+    public WebElement favorite;
 
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
+    public WebElement back;
 
 
 

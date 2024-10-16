@@ -141,6 +141,14 @@ public class ReusableMethods {
         enableElement.sendKeys(key);
     }
 
+    public static void waitForElementIsDisplayed(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+
+        // Element görünür olana kadar bekler ve ardından tıklar
+        WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        enableElement.isDisplayed();
+    }
+
     public static void clickAtCoordinatesW3C(int x, int y) {
         AppiumDriver driver = Driver.getAppiumDriver();
 
