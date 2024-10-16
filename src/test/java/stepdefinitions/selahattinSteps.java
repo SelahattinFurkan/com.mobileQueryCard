@@ -10,14 +10,23 @@ import utilities.ReusableMethods;
 import static utilities.Driver.getAppiumDriver;
 
 public class selahattinSteps {
-        ReusableMethods.wait(10);
+
+    US_13_14_15 us = new US_13_14_15();
+    Actions actions = new Actions(getAppiumDriver());
+
+    @Given("User makes driver adjustments")
+    public void user_makes_driver_adjustments() {
+        getAppiumDriver();
+
+        ReusableMethods.wait(6);
+
 
 
     }
 
     @Given("User clicks the button with description {string}")
     public void user_clicks_the_button_with_description(String string) {
-       ReusableMethods.scrollWithUiScrollableContentDesc(string);
+       ReusableMethods.scrollWithUiScrollableContentDescClick(string);
 
     }
     @Given("User clicks the button email and sendKeys {string}")
@@ -45,15 +54,19 @@ public class selahattinSteps {
     }
     @Given("Addition to the liked list")
     public void addition_to_the_liked_list() {
-
+        us.like.click();
     }
     @Given("Product imaging is done")
     public void product_imaging_is_done() {
+        us.socks.click();
+        us.blackSocks.click();
 
     }
     @Given("Add to cart")
     public void add_to_cart() {
-
+    us.addToCartButon.click();
+    ReusableMethods.wait(3);
+    actions.click(us.back).perform();
     }
     @Given("Filter icons must be visible and active")
     public void filter_icons_must_be_visible_and_active() {

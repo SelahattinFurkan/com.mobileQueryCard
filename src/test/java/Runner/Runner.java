@@ -12,8 +12,6 @@ import org.junit.runner.RunWith;
         tags = "@Selahattin",
         dryRun =false
 
-
-
 )
 public class Runner {
 
