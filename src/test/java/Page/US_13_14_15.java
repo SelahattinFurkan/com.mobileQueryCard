@@ -30,11 +30,19 @@ public class US_13_14_15 {
             "$15.00\"]/android.widget.ImageView")
     public WebElement like;
 
+    @FindBy(xpath = "//android.view.View[@content-desc=\"Adidas 3-Stripes Cushioned Crew Socks\n" +
+            "0 (0  Reviews)\n" +
+            "$15.00\"]")
+    public WebElement socks;
 
+    @FindBy(xpath = "//android.view.View[@content-desc=\"Black\"]")
+    public WebElement blackSocks;
 
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Add To Cart\"]")
+    public WebElement addToCartButon;
 
-
-
+    @FindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[1]")
+    public WebElement back;
 
 
 }

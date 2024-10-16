@@ -1,4 +1,5 @@
 Feature: As a registered user, I would like to be able to see the categories and products of the Menu menu on the home page.
+
   Background: User opens the app
     * User makes driver adjustments
     * User clicks the button with description "Profile"
@@ -7,8 +8,6 @@ Feature: As a registered user, I would like to be able to see the categories and
     * User clicks the button email and sendKeys "selahattinfurkan.user@querycart.com"
     * User clicks the button with description Password and sendKeys "Query.71024"
     * User clicks the button Sign In
-
-
 
 @Selahattin
   Scenario: View male section features
