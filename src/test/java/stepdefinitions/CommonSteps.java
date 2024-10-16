@@ -11,4 +11,10 @@ public class CommonSteps {
         Driver.getAppiumDriver();
         ReusableMethods.wait(5);
     }
+
+    @Given("User clicks the {string} button.")
+    public void user_clicks_the_button(String buttonDesc) {
+
+        ReusableMethods.scrollWithUiScrollableContentDescClick(buttonDesc);
+    }
 }

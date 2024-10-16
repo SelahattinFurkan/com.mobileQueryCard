@@ -126,20 +126,16 @@ public class ReusableMethods {
         );
     }
 
-    public static void waitForElementAndClick(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
 
-        // Element görünür olana kadar bekler ve ardından tıklar
-        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
-        clickableElement.click();
-}
+    public static void scrollWithUiScrollableContentDescClick(String elementText) {
 
-    public static void waitForElementAndSendkey(WebElement element,String key) {
-        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+        Driver.getAppiumDriver().findElement(
+                MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
+                )
+        ).click();
+    }
 
-        // Element görünür olana kadar bekler ve ardından tıklar
-        WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
-        enableElement.sendKeys(key);
-}
+
 
 }
