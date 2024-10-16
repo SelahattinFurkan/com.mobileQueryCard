@@ -5,8 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.net.URL;
@@ -17,26 +15,23 @@ public class senaStepdefs extends senaPage {
     private AndroidDriver driver;
 
     @When("Login with user information")
-    public void login_with_user_information() {
-        senaPage.profileButton.click();
-        ReusableMethods.wait(2);
-        senaPage.profileSignIn.click();
-        ReusableMethods.wait(2);
-        senaPage.useEmailText.click();
-        ReusableMethods.wait(2);
-        senaPage.boxEmail.sendKeys("senabetul.user@querycart.com");
-        ReusableMethods.wait(2);
-        senaPage.boxPassword.sendKeys("Query.71024");
-        ReusableMethods.wait(2);
-        senaPage.buttonSignIn.click();
-        ReusableMethods.wait(2);
+    public void login_with_user_information() throws InterruptedException {
+        ReusableMethods.waitForElementAndClick(senaPage.profileButton);
+        ReusableMethods.waitForElementAndClick(senaPage.profileSignIn);
+        ReusableMethods.waitForElementAndClick(senaPage.useEmailText);
+        ReusableMethods.waitForElementAndClick(senaPage.boxEmail);
+        ReusableMethods.waitForElementAndSendkey(senaPage.boxEmail,"senabetul.user@querycart.com");
+        ReusableMethods.waitForElementAndClick(senaPage.boxPassword);
+        ReusableMethods.waitForElementAndSendkey(senaPage.boxPassword,"Query.71024");
+        ReusableMethods.waitForElementAndClick(senaPage.buttonSignIn);
 
     }
     @When("The user clicks on the product under most popular on the home page, selects the size and adds it to the cart.")
     public void the_user_clicks_on_the_product_under_most_popular_on_the_home_page_selects_the_size_and_adds_it_to_the_cart() {
-
-        senaPage.tShirtProduit.click();
-        senaPage.tShirtSize.click();
+        ReusableMethods.wait(100);
+        ReusableMethods.waitForElementAndClick(senaPage.menTshirt);
+        ReusableMethods.waitForElementAndClick(senaPage.tShirtProduit);
+        ReusableMethods.waitForElementAndClick(senaPage.tShirtSize);
         senaPage.buttonAddtoCart.click();
     }
 

@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import Page.US_13_14_15;
 import io.cucumber.java.en.Given;
 
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +10,7 @@ import utilities.ReusableMethods;
 import static utilities.Driver.getAppiumDriver;
 
 public class selahattinSteps {
+
     US_13_14_15 us = new US_13_14_15();
     Actions actions = new Actions(getAppiumDriver());
 
