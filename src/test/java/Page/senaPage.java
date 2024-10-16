@@ -2,10 +2,15 @@ package Page;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilities.Driver;
 
 public class senaPage {
+    public senaPage(){
 
-    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[23]")
+        PageFactory.initElements(Driver.getAppiumDriver(),this);
+        }
+    @FindBy(xpath = "//*[@content-desc='Profile']")
     public WebElement profileButton;
 
     @FindBy(xpath = "//*[@content-desc='Sign In']")
@@ -23,12 +28,13 @@ public class senaPage {
     @FindBy(xpath = "(//*[@content-desc='Sign In'])[2]")
     public WebElement buttonSignIn;
 
-    @FindBy(xpath = "//android.view.View[@content-desc=\"Flower Print Foil T-shirt\n" +
-            "0 (0  Reviews)\n" +
-            "$65.00\"]")
+    @FindBy(xpath = "//*[@content-desc='Men T-Shirt']")
+    public WebElement menTshirt;
+
+    @FindBy(xpath = "//android.view.View[@content-desc='Classic Cotton T-Shirt\\n0 (0  Reviews)\\n$20.00'")
     public WebElement tShirtProduit;
 
-    @FindBy(xpath = "//android.view.View[@content-desc=\"M\"]")
+    @FindBy(xpath = "//*[@content-desc='M']")
     public WebElement tShirtSize;
 
     @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Add To Cart\"]")

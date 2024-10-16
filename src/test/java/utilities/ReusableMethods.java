@@ -15,6 +15,8 @@ import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -123,5 +125,21 @@ public class ReusableMethods {
                 )
         );
     }
+
+    public static void waitForElementAndClick(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+
+        // Element görünür olana kadar bekler ve ardından tıklar
+        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        clickableElement.click();
+}
+
+    public static void waitForElementAndSendkey(WebElement element,String key) {
+        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+
+        // Element görünür olana kadar bekler ve ardından tıklar
+        WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        enableElement.sendKeys(key);
+}
 
 }

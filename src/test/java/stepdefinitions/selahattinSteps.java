@@ -1,14 +1,17 @@
 package stepdefinitions;
 
+import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.Given;
 import utilities.ReusableMethods;
 
 import static utilities.Driver.getAppiumDriver;
 
 public class selahattinSteps {
+
+    public static AppiumDriver driver;
     @Given("User makes driver adjustments")
     public void user_makes_driver_adjustments() {
-        getAppiumDriver();
+      driver =  getAppiumDriver();
         ReusableMethods.wait(10);
 
     }
