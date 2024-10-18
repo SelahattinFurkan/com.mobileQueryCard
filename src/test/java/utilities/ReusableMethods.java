@@ -28,6 +28,10 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Date;
 
+import static java.time.Duration.ofMillis;
+import static java.util.Collections.singletonList;
+import static utilities.Driver.getAppiumDriver;
+
 
 public class ReusableMethods {
     private static DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -72,7 +76,7 @@ public class ReusableMethods {
     }
 
     public static void scrollWithUiScrollableAndClick(String elementText) {
-        AndroidDriver driver = (AndroidDriver) Driver.getAppiumDriver();
+        AndroidDriver driver = (AndroidDriver) getAppiumDriver();
         //  driver.findElement(AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
         driver.findElement(By.xpath("//*[@text='" + elementText + "']")).click();
 
@@ -88,7 +92,7 @@ public class ReusableMethods {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         // TakesScreenshot is an interface of selenium that takes the screenshot
-        TakesScreenshot ts = (TakesScreenshot) Driver.getAppiumDriver();
+        TakesScreenshot ts = (TakesScreenshot) getAppiumDriver();
 
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
@@ -102,7 +106,7 @@ public class ReusableMethods {
     public static void ekranKaydirmaMethodu(int xPress, int yPress, int wait, int xMove, int yMove) {
         TouchAction action = new TouchAction<>((PerformsTouchActions) getAppiumDriver());
         action.press(PointOption.point(xPress, yPress))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+                .waitAction(WaitOptions.waitOptions(ofMillis(wait)))
                 .moveTo(PointOption.point(xMove, yMove))
                 .release()
                 .perform();
@@ -119,7 +123,7 @@ public class ReusableMethods {
 
     public static void scrollWithUiScrollableContentDesc(String elementText) {
 
-        Driver.getAppiumDriver().findElement(
+        getAppiumDriver().findElement(
                 MobileBy.AndroidUIAutomator(
                         "new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\"" + elementText + "\"));"
                 )
@@ -127,7 +131,7 @@ public class ReusableMethods {
     }
 
     public static void waitForElementAndClick(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(getAppiumDriver(), Duration.ofSeconds(20));
 
         // Element görünür olana kadar bekler ve ardından tıklar
         WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -136,7 +140,7 @@ public class ReusableMethods {
 
 
     public static void waitForElementAndSendkey(WebElement element,String key) {
-        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(getAppiumDriver(), Duration.ofSeconds(20));
 
         // Element görünür olana kadar bekler ve ardından tıklar
         WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -144,7 +148,7 @@ public class ReusableMethods {
     }
 
     public static void waitForElementIsDisplayed(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(getAppiumDriver(), Duration.ofSeconds(20));
 
         // Element görünür olana kadar bekler ve ardından tıklar
         WebElement enableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -152,15 +156,15 @@ public class ReusableMethods {
     }
 
     public static void clickAtCoordinatesW3C(int x, int y) {
-        AppiumDriver driver = Driver.getAppiumDriver();
+        AppiumDriver driver = getAppiumDriver();
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence tap = new Sequence(finger, 1)
-                .addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), x, y))
+                .addAction(finger.createPointerMove(ofMillis(0), PointerInput.Origin.viewport(), x, y))
                 .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
                 .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-        driver.perform(Collections.singletonList(tap));
+        driver.perform(singletonList(tap));
     }
 
 
