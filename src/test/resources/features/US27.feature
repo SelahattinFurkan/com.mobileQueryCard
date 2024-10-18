@@ -14,7 +14,7 @@ Feature: As a registered user, I want to have a favorite products page on the si
     And  5 sn wait
     And  shopping cart page opens
 
-  @US27
+
   Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
 
     When user clicks shopping cart
@@ -22,26 +22,26 @@ Feature: As a registered user, I want to have a favorite products page on the si
     And  user clicks "Go To Shopping"
     And  user confirms return to homepage
 
+@US27
+  Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
+
+    When user clicks "premierProduit"
+    And  user clicks "Size M"
+    And  user clicks "Add To Cart"
+    And  user clicks "Shopping Cart"
+
+
+
+  @US27
+  Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
+
+    When user clicks "CartHomePage"
+    And  sees the remove button
+
 
   Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
 
-    When user clicks "Go To Shopping"
-    And  user clicks "Go To Shopping"
-    And  user clicks "Go To Shopping"
-    And  user clicks "Go To Shopping"
-    And sees the remove button
-    And user clicks "Go To Shopping"
-
-
-  Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
-
-    When kullanici sepete gider
-    And ekli urunlerden ilkini siler
-
-
-  Scenario: user clicks on the wishlist and confirms that they went to the wishlist page
-
-    When kullanici sepete gider
+    When user clicks "CartHomePage"
     And  subtotal yazisini ve karsisindaki degeri gorur
 
 

@@ -24,6 +24,24 @@ public class US27_WebElement {
     @FindBy(xpath = "//*[@content-desc='Home']")
     public WebElement home;
 
+    @FindBy(xpath = "//*[@content-desc='M']")
+    public WebElement SizeM;
+
+    @FindBy(xpath = "//*[@content-desc='Add To Cart']")
+    public WebElement addToCart;
+
+    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[13]")
+    public WebElement shoppingCartDansLeProduit;
+
+    @FindBy(xpath = "//*[@content-desc='Remove']")
+    public WebElement remove;
+
+
+
+
+
+
+
 
 
 

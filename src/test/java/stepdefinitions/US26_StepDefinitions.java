@@ -137,6 +137,29 @@ public class US26_StepDefinitions {
             case "Go To Shopping" :
                 ReusableMethods.waitForElementAndClick(us27.goToShopping);
                 break;
+
+            case "Size M" :
+                ReusableMethods.waitForElementAndClick(us27.SizeM);
+                break;
+
+            case "Add To Cart" :
+                ReusableMethods.scrollWithUiScrollableContentDesc("Add To Cart");
+                ReusableMethods.waitForElementAndClick(us27.addToCart);
+                break;
+
+            case "Shopping Cart" :
+                ReusableMethods.waitForElementAndClick(us27.shoppingCartDansLeProduit);
+                break;
+
+            case "Remove" :
+
+                ReusableMethods.waitForElementAndClick(us27.remove);
+                break;
+
+            case "CartHomePage" :
+
+                ReusableMethods.waitForElementAndClick(us27.cart);
+                break;
         }
 
     }
@@ -159,6 +182,13 @@ public class US26_StepDefinitions {
         Assert.assertTrue(us27.cart.isDisplayed());
 
     }
+
+    @When("sees the remove button")
+    public void sees_the_remove_button() {
+        ReusableMethods.waitForElementIsDisplayed(us27.remove);
+
+    }
+
 
 
 
