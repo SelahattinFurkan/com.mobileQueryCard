@@ -28,10 +28,6 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Date;
 
-import static io.appium.java_client.AppiumBy.androidUIAutomator;
-import static java.time.Duration.ofMillis;
-import static java.util.Collections.singletonList;
-import static utilities.Driver.getAppiumDriver;
 
 public class ReusableMethods {
     private static DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
